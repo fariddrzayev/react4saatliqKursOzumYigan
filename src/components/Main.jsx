@@ -57,14 +57,17 @@ function Main() {
                         <Select name="department" label='Department'/>
                         <DatePicker />
                         <Checkbox label="Permanent Employee"/>
-                        <Grid container>
+
+                        <div>
+                        <Button name="Submit" color="primary"/>
+                        <Button name="Reset" color="default"/>
+                        </div>
+                        {/* <Grid container>
                             <Grid xs={2}>
-                                <Button name="Submit" color="primary"/>
                             </Grid>
                             <Grid xs={3}>
-                                <Button name="Reset" color="default"/>
                             </Grid>
-                        </Grid>
+                        </Grid> */}
 
                     </Grid>
                 </Grid>
