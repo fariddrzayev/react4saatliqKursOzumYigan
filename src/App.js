@@ -1,24 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
+import { makeStyles, ThemeProvider, CssBaseline, createTheme } from '@material-ui/core';
+import SideMenu from './components/SideMenu'
+import Navbar from './components/Navbar'
+import Header from './components/Header'
+import Main from './components/Main'
+
+const style = makeStyles({
+  appMain: {
+    paddingLeft: '320px',
+     width: '100%',
+     backgroundColor: '#f4f5fd'
+    }
+  }
+)
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#333996",
+      light: "#3c44b126"
+    },
+    secondary: {
+      main: "#f83245",
+      light: "#f824526"
+    },
+    background: {
+      default: '#f4f5fd'
+    }
+  },
+  shape: {
+    borderRadius: '12px'
+  },
+  typography: {
+    button: {
+      textTransform: 'none'
+    }
+  }
+})
+
 
 function App() {
+
+  const classes = style();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme} >
+      <SideMenu/>
+      <div className={classes.appMain}>
+        <Navbar />
+        <Header />
+        <Main />
+      </div>
+    <CssBaseline />
+
+    </ThemeProvider>
   );
 }
 
