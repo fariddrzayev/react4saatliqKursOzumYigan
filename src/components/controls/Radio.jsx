@@ -15,14 +15,14 @@ export default function RadioButtonsGroup(props) {
    const {name,label,onChange} = props
     const [value, setValue] = React.useState('male');
     const classes = style();
-    const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  //   const handleChange = (event) => {
+  //   setValue(event.target.value);
+  // };
 
   return (
     <FormControl className={classes.main} component="fieldset">
       <FormLabel component="legend">Gender</FormLabel>
-      <RadioGroup row  aria-label="gender" name="gender" value={value} onChange={handleChange}>
+      <RadioGroup row  aria-label="gender" name={name} value={value} onChange={onChange}>
         <FormControlLabel value="male" selected control={<Radio />} label="Male" />
         <FormControlLabel value="female" control={<Radio />} label="Female" />
         <FormControlLabel value="other" control={<Radio />} label="Other" />
