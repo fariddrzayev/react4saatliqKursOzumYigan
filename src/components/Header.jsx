@@ -39,7 +39,7 @@ function Main() {
 
     return (
         <div >
-            <Paper square elevation='0'>
+            <Paper square elevation={0}>
                 <div className={classes.pageHeader}>
                     <Card className={classes.pageIcon}>
                         <PeopleOutlineIcon fontSize='large'  />

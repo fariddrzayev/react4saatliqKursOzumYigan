@@ -11,8 +11,9 @@ const style = makeStyles(theme => ({
         // margin: theme.spacing(3)
     }
 }))
-export default function RadioButtonsGroup() {
-    const [value, setValue] = React.useState('female');
+export default function RadioButtonsGroup(props) {
+   const {name,label,onChange} = props
+    const [value, setValue] = React.useState('male');
     const classes = style();
     const handleChange = (event) => {
     setValue(event.target.value);
@@ -21,8 +22,8 @@ export default function RadioButtonsGroup() {
   return (
     <FormControl className={classes.main} component="fieldset">
       <FormLabel component="legend">Gender</FormLabel>
-      <RadioGroup row  aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
+      <RadioGroup row  aria-label="gender" name="gender" value={value} onChange={handleChange}>
+        <FormControlLabel value="male" selected control={<Radio />} label="Male" />
         <FormControlLabel value="female" control={<Radio />} label="Female" />
         <FormControlLabel value="other" control={<Radio />} label="Other" />
       </RadioGroup>

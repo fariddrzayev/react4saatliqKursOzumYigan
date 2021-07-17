@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import {makeStyles, Paper, Card, Typography, TextField, Grid} from '@material-ui/core';
 import { TextFields } from '@material-ui/icons';
@@ -42,20 +42,43 @@ const useStyle = makeStyles(theme => ({
 function Main() {
     const classes = useStyle()
 
+    const initialValues = {
+        id: 0,
+        fullName: '',
+        email: '',
+        mobile: '',
+        city: '',
+        gender: 'male',
+        department: '',
+        datepicker: new Date(),
+        permanentEmployee: false,
+    }
+
+    const handleOnChange = e => {
+        const {name, value} = e.target
+
+        setValues({
+            ...values,
+            [name] : value
+        })
+    }
+    const [values, setValues] = useState(initialValues)
+
+
     return (
         <div className={classes.main}>
             <Paper className={classes.paper}>
                 <Grid container>
-                    <Grid xs={6}>
-                        <Input variant='outlined' label='Full Name'/>
-                        <Input variant='outlined' label='Email'/>
-                        <Input variant='outlined' label='Mobile'/>
-                        <Input variant='outlined' label='City'/>
+                    <Grid item xs={6}>
+                        <Input variant='outlined' name="fullName"  label='Full Name' value={values.fullName} onChange={handleOnChange}/>
+                        <Input variant='outlined' name="email" value={values.email} onChange={handleOnChange} label='Email'/>
+                        <Input variant='outlined' name="mobile" value={values.mobile} onChange={handleOnChange} label='Mobile'/>
+                        <Input variant='outlined' name="city" value={values.city} onChange={handleOnChange} label='City'/>
                     </Grid>
-                    <Grid xs={6}>
-                        <Radio />
+                    <Grid item xs={6}>
+                        <Radio name="gender" label='Gender' value={values.gender} onChange={handleOnChange}  />
                         <Select name="department" label='Department'/>
-                        <DatePicker />
+                        <DatePicker name="datepicker" label='Date' value={values.datepicker} onChange={handleOnChange} />
                         <Checkbox label="Permanent Employee"/>
 
                         <div>
