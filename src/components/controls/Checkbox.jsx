@@ -16,17 +16,27 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 export default function CheckboxLabels(props) {
-    const {label} = props
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
-  });
+    const {name,label,value,onChange} = props
+  // const [state, setState] = React.useState({
+  //   checkedA: true,
+  //   checkedB: true,
+  //   checkedF: true,
+  //   checkedG: true,
+  // });
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
+  // const handleChange = (e) => {
+  //   console.log(e.target)
+  //   e.target.value = e.target.checked
+  //   console.log(e.target)
+  //   return {}
+  //   // onChange(e.target)
+  // };
+
+  const handleChange = (name, value) => ({
+    target: {
+      name,value
+    }
+  })
 
   return (
     <FormControl>
@@ -34,9 +44,13 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkedB}
-            onChange={handleChange}
-            name="checkedB"
+            // checked={state.checkedB}
+            // onChange={handleChange}
+            onChange={ e => onChange( handleChange(name, e.target.checked) )}
+
+            name={name}
+            checked={value}
+            label={label}
             color="secondary"
           />
         }

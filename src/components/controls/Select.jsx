@@ -19,11 +19,17 @@ const useStyles = makeStyles((theme) => ({
 export default function MuiSelect(props) {
   const classes = useStyles();
   const [department, setDepartment] = React.useState('');
-  const {name, label} = props
+  const {name, label, value, onChange} = props
 
   const handleChange = (event) => {
     setDepartment(event.target.value);
   };
+  const getDepartmentColllection = () => ([
+    { id: '1', title: 'Development' },
+    { id: '2', title: 'Marketing' },
+    { id: '3', title: 'Accounting' },
+    { id: '4', title: 'HR' },
+])
 
   return (
     <div>
@@ -33,16 +39,17 @@ export default function MuiSelect(props) {
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
-          value={department}
-          onChange={handleChange}
-          label="name"
+          value={value}
+          onChange={onChange}
+          label={label}
+          name={name}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value="">None</MenuItem>
+         
+          { getDepartmentColllection().map(
+              item => ( <MenuItem key={item.id} value={item.id}>{item.title}</MenuItem>)
+          )}
+         
         </Select>
       </FormControl>
     </div>

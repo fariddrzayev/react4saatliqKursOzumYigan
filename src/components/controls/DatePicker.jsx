@@ -26,11 +26,11 @@ export default function MaterialUIPickers(props) {
           disableToolbar
           variant="inline"
           formate="MMM/dd/yyyy"
-          margin="normal"
+          name={name}
           id="date-picker-inline"
-          label="Date picker inline"
+          label={label}
           value={selectedDate}
-          onChange={handleDateChange}
+          onChange={onChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}

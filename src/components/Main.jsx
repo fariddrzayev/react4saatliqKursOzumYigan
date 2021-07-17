@@ -51,12 +51,14 @@ function Main() {
         gender: 'male',
         department: '',
         datepicker: new Date(),
-        permanentEmployee: false,
+        isPermanent: false,
     }
 
     const handleOnChange = e => {
         const {name, value} = e.target
 
+
+        console.log(name, value)
         setValues({
             ...values,
             [name] : value
@@ -77,9 +79,11 @@ function Main() {
                     </Grid>
                     <Grid item xs={6}>
                         <Radio name="gender" label='Gender' value={values.gender} onChange={handleOnChange}  />
-                        <Select name="department" label='Department'/>
+                        <Select name="department" label='Department' value={values.department} onChange={handleOnChange}/>
+
+
                         <DatePicker name="datepicker" label='Date' value={values.datepicker} onChange={handleOnChange} />
-                        <Checkbox label="Permanent Employee"/>
+                        <Checkbox name="isPermanent" value={values.isPermanent} onChange={handleOnChange} label="Permanent Employee"/>
 
                         <div>
                         <Button name="Submit" color="primary"/>
